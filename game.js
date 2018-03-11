@@ -1,3 +1,26 @@
+/*
+  1) Set up basic Phaser object and functions
+  2) Create Square with keyboard input (repreating the first demo)
+  3) Introduce the basic pattern for a joypad
+    a) Variable to contain the handle for the gamepad
+    b) Method to start gamepad manager
+    c) assigning a gamepad to a handle
+    d) Detect D-Pad input from controller
+    e) Handle Analog Stick input
+    f) Demonstrate a button press by spawning in a player sprite
+      i.) Take Player instantiation from create()
+      ii.) Create function initPlayers() in update()
+      iii.) add instructionText and gameStart
+      iv.) Check for a connected gamepad and player has yet to spawn
+  4) Add more players to demo
+    a) Create handles for 4 gamepads total (most Phaser can handle?)
+    b) Create variables for other players
+    c) Add other players into initPlayers
+    d) Use sprite instead of image to adjust 'Tint"
+    e) Bring input into generic function
+    f) Demo results!
+*/
+
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 var pad1, pad2, pad3, pad4;
 var sqPlayer1, sqPlayer2, sqPlayer3, sqPlayer4;

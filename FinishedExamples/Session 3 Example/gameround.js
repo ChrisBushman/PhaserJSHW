@@ -1,16 +1,38 @@
-var gameRound = function(game) {}
+var gameRound = function(game) {
 
+}
+
+var initX = 100;
+var initY = 100;
+var initTint = 0.3;
+var finishX = 600;
+var finishY = 800;
+var finishLine;
 
 gameRound.prototype = {
+  preload: function() {
+    game.load.image('player', 'assets/Images/square.png');
+    game.load.image('finishLine', 'assets/Images/projectile.png');
+  },
+  
   create: function() {
+    // Adding 30 to finishline X coordinate to compensate for size of player sprite
+    finishLine = game.add.sprite(finishX + 30, 0, 'finishLine');
+    finishLine.scale.y = finishY;
+    
     players.forEach( function(player) {
-
-      player.obj = game.add.sprite(player.x, player.y, player.sprite);
+      player.obj = game.add.sprite(initX, initY, 'player');
+      player.obj.tint = initTint * 0xffffff;
       
-      if (player.tint) {
-        player.obj.tint = player.tint;
-      }
+      // Update Y to have different spawn position
+      initY = initY + 60;
+      
+      // Update tint to have different tint for each player
+      initTint = initTint + 0.2;
     });
+    
+    initY = 100;
+    initTint = 0.3;
   },
   
   update: function() {
@@ -18,7 +40,8 @@ gameRound.prototype = {
     players.forEach( function(player) {
       movePlayer(player.pad, player.obj);
       
-      if (player.obj.x > 600) {
+      if (player.obj.x > finishX) {
+        winner = "The winner was Player " + player.id + "!";
         game.state.start("GameOver");
       }
     });

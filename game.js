@@ -59,4 +59,5 @@ function update() {
       // Player is idle; Play the idle animation
       player.animations.play('idle');
   }
+  
 }

@@ -20,11 +20,11 @@ function preload() {
   game.load.image('launcher', 'assets/Images/square.png');
   
   // . Load our keyboard input
+
   cursors = game.input.keyboard.createCursorKeys();
 }
 
 function create() {
-  
   // . Start the Arcade physics system
   game.physics.startSystem(Phaser.Physics.ARCADE);
   
@@ -63,6 +63,7 @@ function create() {
   launcher = game.add.image(400,300, 'launcher');
   
   launcher.anchor.setTo(0.5,0.5);
+
 }
 
 function update() {
@@ -74,6 +75,7 @@ function update() {
       player.position.x = player.position.x - 5;
       
       // . Set animation to 'moving; rotate sprite to the left
+
       player.animations.play('moving');
       player.angle = 180;
     
@@ -87,7 +89,6 @@ function update() {
       // . Set animation to 'moving; rotate sprite to the right
       player.animations.play('moving');
       player.angle = 0;
-      
   }
   
   else if (cursors.up.isDown)
@@ -150,6 +151,5 @@ function gameOver(obj1, obj2){
   willFire = false;
   player.kill();
   game.stage.backgroundColor = '#992d2d';
-  
   
 }
